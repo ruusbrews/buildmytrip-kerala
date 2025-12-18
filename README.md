@@ -16,32 +16,20 @@ This project was built as part of a university web development assignment and in
 - OpenAI API
 - dotenv
 
-## Project Structure
-project-root/
-│
-├── HTML/ # All HTML pages
-├── CSS/ # Stylesheets
-├── IMAGES/ # Images and assets
-├── server/ # Backend server
-│ ├── app.js
-│ ├── package.json
-│ ├── package-lock.json
-│ └── .env # NOT committed to GitHub
-│
-└── README.md
-
 ## How to Run the Project Locally
 
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/your-username/buildmytrip-kerala.git
 cd buildmytrip-kerala
+```
 
 ### 2. Install backend dependencies
 Need to install express, cors, dotenv and openai.
 ```bash
 cd server
 npm install
+```
 
 ### 3. Get an OpenAI API key
 1. Go to 👉 https://platform.openai.com/
@@ -58,5 +46,6 @@ OPENAI_API_KEY = your_api_key_here
 ```bash
 cd server
 node app.js
+```
 
 Open any html file using Live Server or directly in your browser and enjoy!
