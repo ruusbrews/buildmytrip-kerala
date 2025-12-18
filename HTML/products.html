@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Farha Odakkam Kuzhiyil, 60311041-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMyTrip Kerala - Products</title>
+    <link rel="stylesheet" href="/CSS/products.css">
+    <link rel="icon" type="image/png" href="/IMAGES/logo1-removebg-preview.png">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="/IMAGES/logo.png" alt="BuildMyTrip Kerala Logo">
+            <p>Your Trip, <i>Your Way.</i></p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/HTML/index.html">Home</a></li>
+                <li><a href="/HTML/products.html">Products</a></li>
+                <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                <li><a href="/HTML/contact.html">Contact Us</a></li>
+                <li><a href="/HTML/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <h1>Welcome!</h1>
+        <p>Add destinations you want to visit to your itinerary, then click 'View Itinerary' to start your journey!</p>
+        <input type="button" id="view-itn" value="View Itinerary">
+    </article>
+    <section id="products-grid">
+        <div class="product-card">
+            <img src="/IMAGES/ayurvedicspa_kovalam.jpg">
+            <h3>Ayurvedic Spa in Kovalam</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Traditional Ayurvedic treatments and full-body massages by the beach, including consultation and customized oil therapy — perfect for relaxation and wellness.</p>
+            <p class="price">₹2,000</p>
+            <button class="add-to-itn" onclick="addToItinerary('Spa-Kovalam')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/beachcliff_varkala.jpg">
+            <h3>Cliffside Beach in Varkala</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Walk the dramatic red cliffs, enjoy sunset views and cliff-top cafés; includes a local guide to recommend yoga spots and hidden viewpoints.</p>
+            <p class="price">₹1,000</p>
+            <button class="add-to-itn" onclick="addToItinerary('Beach-Varkala')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/birdsanctuary_kumarakom.jpg">
+            <h3>Bird Sanctuary in Kumarakom</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Guided birdwatching boat trip through tranquil backwaters, ideal for spotting migratory species and learning about local wetland ecology.</p>
+            <p class="price">₹1,000</p>
+            <button class="add-to-itn" onclick="addToItinerary('Birds-Kumarakom')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/camping_vagamonhills.jpg">
+            <h3>Camping in Vagamon Hills</h3>
+            <p class="rating">★★★★★</p>
+            <p class="description">Overnight tent camping with campfire, guided nature walks, and stargazing on misty meadows — basic camping gear and guide included.</p>
+            <p class="price">₹2,500</p>
+            <button class="add-to-itn" onclick="addToItinerary('Camping-Vagamon')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/edakkalcave_wayanad.jpg">
+            <h3>Edakkal Cave in Wayanad</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Short trek and guided exploration of ancient petroglyphs at Edakkal Caves, with archaeological background and scenic viewpoints.</p>
+            <p class="price">₹800</p>
+            <button class="add-to-itn" onclick="addToItinerary('Edakkal-Cave')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/houseboat_alappuzha.jpg">
+            <h3>Houseboat Stay in Alappuzha</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Private houseboat cruise through backwaters with local meals, guide/boat crew service, and village visits — a peaceful multi-hour experience.</p>
+            <p class="price">₹3,500</p>
+            <button class="add-to-itn" onclick="addToItinerary('Houseboat-Alappuzha')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/karapuzhazipline_wayanad.jpg">
+            <h3>Karappuzha Zipline in Wayanad</h3>
+            <p class="rating">★★★★★</p>
+            <p class="description">Thrilling zipline adventure over lush valleys (safety briefing and guide included); great for adrenaline seekers and scenic photos.</p>
+            <p class="price">₹1,800</p>
+            <button class="add-to-itn" onclick="addToItinerary('Zipline-Wayanad')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/kathakali_thrissur.jpg">
+            <h3>Kathakali Performance in Thrissur</h3>
+            <p class="rating">★★★☆☆</p>
+            <p class="description">Evening Kathakali show plus a short workshop/introduction explaining costumes, makeup and storytelling traditions.</p>
+            <p class="price">₹900</p>
+            <button class="add-to-itn" onclick="addToItinerary('Kathakali-Thrissur')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/munroecanal_kollam.jpg">
+            <h3>Munroe Island Canal in Kollam</h3>
+            <p class="rating">★★★★★</p>
+            <p class="description">Slow canoe tour through narrow canals and village life, guided by locals who explain livelihoods, coir making and birdlife.</p>
+            <p class="price">₹1,000</p>
+            <button class="add-to-itn" onclick="addToItinerary('Canal-Kollam')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/streetart_fortkochi.jpg">
+            <h3>Street Art Walk in Fort Kochi</h3>
+            <p class="rating">★★★☆☆</p>
+            <p class="description">Guided walking tour of Fort Kochi’s murals, colonial architecture and hidden art spots, with local history and artist stories.</p>
+            <p class="price">₹600</p>
+            <button class="add-to-itn" onclick="addToItinerary('Street-Art')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/streetfood_kozhikode.jpg">
+            <h3>Street Food Trail in Kozhikode</h3>
+            <p class="rating">★★★★★</p>
+            <p class="description">Tasting tour of Malabar specialties — biryani, halwa, banana chips — guided stops at famous stalls and local eateries.</p>
+            <p class="price">₹700</p>
+            <button class="add-to-itn" onclick="addToItinerary('Street-Food')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/sunsetbeach_kozhikode.png">
+            <h3>Sunset Beach in Kozhikode</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Relaxed evening at Kozhikode’s popular sunset spot with a local guide suggesting best stalls and vantage points.</p>
+            <p class="price">₹400</p>
+            <button class="add-to-itn" onclick="addToItinerary('Beach-Kozhikode')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/teaplantation_munnar.jpg">
+            <h3>Tea Plantations in Munnar</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Guided walk through tea gardens, visit to a tea factory, and tasting session with explanations of plucking and processing.</p>
+            <p class="price">₹1,300</p>
+            <button class="add-to-itn" onclick="addToItinerary('Tea-Trek')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/waterfalls_athirapilly.jpg">
+            <h3>Waterfall Excursion in Athirapilly</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Day trip to Athirapilly Falls with short treks, viewpoint visits and wildlife-spotting tips from an experienced guide.</p>
+            <p class="price">₹1,000</p>
+            <button class="add-to-itn" onclick="addToItinerary('Waterfalls-Athirapilly')">Add To Itinerary +</button>
+        </div>
+        <div class="product-card">
+            <img src="/IMAGES/wildlifepark_periyar.webp">
+            <h3>Wildlife Park in Periyar</h3>
+            <p class="rating">★★★★☆</p>
+            <p class="description">Guided jeep or boat safari in Periyar, focused on elephants, birdlife and conservation insights; includes park permit guidance.</p>
+            <p class="price">₹1,600</p>
+            <button class="add-to-itn" onclick="addToItinerary('Wildlife-Park')">Add To Itinerary +</button>
+        </div>
+    </section>
+    <script>
+        const destinations = {
+            "Spa-Kovalam": { name: "Ayurvedic Spa in Kovalam", price: 2000 },
+            "Beach-Varkala": { name: "Cliffside Beach in Varkala", price: 1000 },
+            "Birds-Kumarakom": { name: "Bird Sanctuary in Kumarakom", price: 1000 },
+            "Camping-Vagamon": { name: "Camping in Vagamon Hills", price: 2500 },
+            "Edakkal-Cave": { name: "Edakkal Cave in Wayanad", price: 800 },
+            "Houseboat-Alappuzha": { name: "Houseboat Stay in Alappuzha", price: 3500 },
+            "Zipline-Wayanad": { name: "Karappuzha Zipline in Wayanad", price: 1800 },
+            "Kathakali-Thrissur": { name: "Kathakali Performance in Thrissur", price: 900 },
+            "Canal-Kollam": { name: "Munroe Island Canal in Kollam", price: 1000 },
+            "Street-Art": { name: "Street Art Walk in Fort Kochi", price: 600 },
+            "Street-Food": { name: "Street Food Trail in Kozhikode", price: 700 },
+            "Beach-Kozhikode": { name: "Sunset Beach in Kozhikode", price: 400 },
+            "Tea-Trek": { name: "Tea Plantations in Munnar", price: 1300 },
+            "Waterfalls-Athirapilly": { name: "Waterfall Excursion in Athirapilly", price: 1000 },
+            "Wildlife-Park": { name: "Wildlife Park in Periyar", price: 1600 }
+        };
+        function addToItinerary(id) {
+            let itinerary = JSON.parse(localStorage.getItem("itinerary")) || []
+
+            // to avoid duplicates
+            if (itinerary.some(item => item.id === id)) {
+                showNotification("Already added to itinerary!")
+                return
+            }
+
+            // add destination
+            itinerary.push({
+                id: id,
+                name: destinations[id].name,
+                price: destinations[id].price
+            })
+
+            // save to localstorage
+            localStorage.setItem("itinerary", JSON.stringify(itinerary))
+            showNotification("Added to itinerary!")
+        }
+        function showNotification(message) {
+            const note = document.createElement("div")
+            note.textContent = message
+            note.style.position = "fixed"
+            note.style.right = "20px"
+            note.style.bottom = "20px"
+            note.style.padding = "10px 20px"
+            note.style.background = "darkolivegreen"
+            note.style.color = "beige"
+            note.style.borderRadius = "5px"
+            note.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)"
+            note.style.zIndex = "9999"
+            note.style.fontSize = "14px"
+
+            document.body.appendChild(note)
+
+            setTimeout(() => {
+                note.remove()
+            }, 2000)
+
+            document.getElementById("view-itn").onclick = () => {
+                window.location.href = "/HTML/itinerary.html"
+            }
+        }
+    </script>
+    <footer>
+        <section>
+            <nav id="about">
+                <p><i>About BuildMyTrip Kerala</i></p>
+                <p id="about-text">Your personalized travel planner for exploring God’s Own Country — where you choose the destinations, and we perfect the journey.</p>
+            </nav>
+            <nav id="socials">
+                <p><i>Our Socials</i></p>
+                <ul>
+                    <li class="gmail"><img src="/IMAGES/gmail-removebg-preview.png" class="gmail"><a href="#">Email</a></li>
+                    <li class="instagram"><img src="/IMAGES/instagram-removebg-preview.png" class="instagram"><a href="#">Instagram</a></li>
+                    <li class="whatsapp"><img src="/IMAGES/whatsapp-removebg-preview.png" class="whatsapp"><a href="#">WhatsApp</a></li>
+                    <li class="linkedin"><img src="/IMAGES/linkedin-removebg-preview.png" class="linkedin"><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+            <nav id="quick-links">
+                <p><i>Quick Links</i></p>
+                <ul>
+                    <li><a href="/HTML/index.html">Home</a></li>
+                    <li><a href="/HTML/products.html">Products</a></li>
+                    <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                    <li><a href="/HTML/contact.html">Contact Us</a></li>
+                    <li><a href="/HTML/faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+            <nav id="contact-info">
+                <p id="contact-title"><i>Contact Us</i></p>
+                <p>📍 Kochi, Kerala, India</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@buildmytripkerala.com</p>
+            </nav>
+        </section>
+        <blockquote>
+            © 2025 BuildMyTrip Kerala — Crafted with love 💌
+        </blockquote>
+    </footer>
+</body>
+</html>

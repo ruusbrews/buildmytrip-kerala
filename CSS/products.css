@@ -1,0 +1,227 @@
+/*Farha Odakkam Kuzhiyil, 60311041, 15/11/25*/
+
+html {
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0px;
+    background-color: beige;
+}
+
+header div {
+    display: flex;
+    background-color: beige;
+}
+
+header p {
+    font-weight: bolder;
+    font-size: larger;
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 30px;
+}
+
+header img {
+    height: 110px;
+    margin-left: 15px;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    background-color: rgb(67, 84, 37);
+    margin: 0px;
+    padding: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: beige;
+    font-weight: bold;
+}  
+
+article {
+    background-color: rgb(67, 84, 37);
+    color: beige;
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+#view-itn {
+    width: 200px;
+    height: 35px;
+    margin: 20px 30px;
+    padding: 10px 40px 30px 40px;
+    background-color: darkolivegreen;
+    color: beige;
+    font-weight: bold;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5 ease, transform 0.5s ease;
+}
+
+#view-itn:hover {
+    background-color: beige;
+    color: darkolivegreen;
+    transform: scale(1.02);
+}
+
+#view-itn:active {
+    transform: scale(0.98);
+}
+
+#products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    row-gap: 35px;
+    padding: 40px;
+    justify-items: center;
+}
+
+.product-card {
+    display: grid;
+    width: 400px;
+    background-color: rgb(241, 241, 207);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.product-card .description, .price, .add-to-itn {
+    margin: 15px;
+    margin-left: 20px;
+}
+
+.product-card h3 {
+    margin: 30px 12px 10px 20px;
+}
+
+.rating {
+    color: goldenrod;
+    font-size: x-large;
+    margin: 0px 12px 0px 20px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.add-to-itn {
+    width: 85%;
+    height: 35px;
+    margin: 20px 30px;
+    background-color: darkolivegreen;
+    color: beige;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5 ease, transform 0.5s ease;
+}
+
+.add-to-itn:hover {
+    background-color: darkgreen;
+    transform: scale(1.02);
+}
+
+.add-to-itn:active {
+    transform: scale(0.98);
+}
+
+footer {
+    background-color: rgb(67, 84, 37);
+}
+
+footer section {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding-left: 30px;
+}
+
+footer nav p i {
+    font-size: large;
+    margin-bottom: 0px;
+}
+
+footer nav p {
+    color: beige;
+}
+
+#about {
+    margin-top: 5px;
+}
+
+#about-text {
+    width: 300px;
+    line-height: 1.8rem;
+}
+
+#socials {
+    padding-left: 10px;
+}
+
+#socials p {
+    margin: 0px;
+    padding: 20px 0px 0px 20px;
+}
+
+footer img {
+    height: 30px;
+}
+
+#socials ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+}
+
+footer li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: beige;
+}
+
+#quick-links {
+    line-height: 1.8rem;
+}
+
+#quick-links ul {
+    padding: 0px;
+}
+
+#contact-title {
+    margin-top: 20px;
+}
+
+footer blockquote {
+    text-align: center;
+    color: beige;
+    padding: 20px;
+}

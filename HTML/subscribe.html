@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Farha Odakkam Kuzhiyil, 60311041-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMyTrip Kerala - Subscribe</title>
+    <link rel="stylesheet" href="/CSS/subscribe.css">
+    <link rel="icon" type="image/png" href="/IMAGES/logo1-removebg-preview.png">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="/IMAGES/logo.png" alt="BuildMyTrip Kerala Logo">
+            <p>Your Trip, <i>Your Way.</i></p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/HTML/index.html">Home</a></li>
+                <li><a href="/HTML/products.html">Products</a></li>
+                <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                <li><a href="/HTML/contact.html">Contact Us</a></li>
+                <li><a href="/HTML/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="main">
+        <h3>Get priority access to discounts, special offers and more!</h3>
+        <form action="https://sit.udst.edu.qa/processform.php" method="post" onsubmit="return validateForm()">
+            <fieldset>
+                <legend>Account Details</legend>
+                <div class="form-grid">
+                    <label for="fname">Full Name:</label>
+                    <input type="text" id="fname" name="full-name" placeholder="Enter full name here" onblur="validateFullname()">
+                    <span class="error-msg" id="errorfname"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter a username here" onblur="validateUsername()">
+                    <span class="error-msg" id="errorusername"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="e.g. BuildMyTrip!2025" onblur="validatePassword()">
+                    <span class="error-msg" id="errorpass"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="confirmpass">Confirm Password:</label>
+                    <input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm your password" onblur = "confirmPassword()">
+                    <span class="error-msg" id="errorconfirmpass"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="example@gmail.com" onblur="validateEmail()">
+                    <span class="error-msg" id="erroremail"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" value="+974" onblur="validatePhone()">
+                    <span class="error-msg" id="errorphone"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" onblur="validateDOB(); validateAgeMatchesDOB()">
+                    <span class="error-msg" id="errordob"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="100" placeholder="Must be 18 or above" onblur="validateAge(); validateAgeMatchesDOB()">
+                    <span class="error-msg" id="errorage"></span>
+                </div>
+            </fieldset>
+            <fieldset id="shipping">
+                <legend>Shipping Address</legend>
+                <div class="form-grid">
+                    <label for="building">Building No.:</label>
+                    <input type="text" id="building" name="building" placeholder="Enter building number here" onblur="validateAddress('building', 'errorbuilding')">
+                    <span class="error-msg" id="errorbuilding"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="street">Street Name:</label>
+                    <input type="text" id="street" name="street" placeholder="Enter street name here" onblur="validateAddress('street', 'errorstreet')">
+                    <span class="error-msg" id="errorstreet"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="city">City:</label>
+                    <select id="city" name="city">
+                        <option value="Doha">Doha</option>
+                        <option value="Al Wakra">Al Wakra</option>
+                        <option value="Dukhan">Dukhan</option>
+                        <option value="Al Khor">Al Khor</option>
+                        <option value="Mesaieed">Mesaieed</option>
+                    </select>
+                </div>
+                <p id="message">Travellers who subscribe to our newsletter get early access to our seasonal offers, newest destinations, events and more. Subscribe today to become part of the family!</p>
+                <div id="check-newsletter">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">I would like to subscribe to the BuildMyTrip newsletter.</label>
+                    <p id="errorcheckbox"></p>
+                </div>
+                <div class="button-section">
+                    <input type="submit" id="submit" class="buttons" value="Register">
+                    <input type="button" id="reset" class="buttons" value="Clear Information" onclick="clearInfo()">
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <script>
+        function validateFullname() {
+            let element = document.getElementById("fname")
+            let lettersPattern = /^[A-Za-z\s]+$/
+            let errorMsg = document.getElementById("errorfname")
+            if (element.value.trim() == "" || !lettersPattern.test(element.value)) {
+                errorMsg.innerHTML = "Please enter a valid full name."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateUsername() {
+            let element = document.getElementById("username")
+            let errorMsg = document.getElementById("errorusername")
+            if (element.value.trim() == "") {
+                errorMsg.innerHTML = "Please enter a username."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validatePassword() {
+            let element = document.getElementById("password")
+            let errorMsg = document.getElementById("errorpass")
+            if (element.value.trim() == "") {
+                errorMsg.innerHTML = "Please enter a valid password."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else if (element.value.length < 8) {
+                errorMsg.innerHTML = "Password must be at least 8 characters."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function confirmPassword() {
+            let confirmation = document.getElementById("confirmpass")
+            let errorMsg = document.getElementById("errorconfirmpass")
+            let password = document.getElementById("password")
+            if (confirmation.value.trim() == "") {
+                errorMsg.innerHTML = "Please confirm your password."
+                errorMsg.style.color = "white"
+                confirmation.style.border = "2px solid red"
+                return false
+            } else if (confirmation.value != password.value) {
+                errorMsg.innerHTML = "Invalid entry - enter the same password as before."
+                errorMsg.style.color = "white"
+                confirmation.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                confirmation.style.border = ""
+                return true
+            }
+        }
+        function validateEmail() {
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            let element = document.getElementById("email")
+            let errorMsg = document.getElementById("erroremail")
+            if (element.value.trim() == "" || emailPattern.test(element.value) == false) {
+                errorMsg.innerHTML = "Please enter a valid email address."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validatePhone() {
+            let phonePattern = /^[\+\d\-\(\)]+$/
+            let element = document.getElementById("phone")
+            let errorMsg = document.getElementById("errorphone")
+            if (element.value.trim() == "" || element.value == "+974" || phonePattern.test(element.value) == false || element.value.length < 8) {
+                errorMsg.innerHTML = "Please enter a valid phone number with no spaces."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateDOB() {
+            let element = document.getElementById("dob")
+            let errorMsg = document.getElementById("errordob")
+            if (element.value.trim() == "") {
+                errorMsg.innerHTML = "Please enter your DOB."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateAge() {
+            let element = document.getElementById("age")
+            let errorMsg = document.getElementById("errorage")
+            if (element.value.trim() == "" || isNaN(element.value.trim())) {
+                errorMsg.innerHTML = "Please enter a valid age."
+                errorMsg.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else if (element.value.trim()<18 || element.value.trim()>100) {
+                errorMsg.innerHTML = "Please enter a valid age. Users must be between 18 and 100 years old."
+                errorMsg.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateAgeMatchesDOB() {
+            let dob = document.getElementById("dob")
+            let age = document.getElementById("age")
+            let errorMsg = document.getElementById("errorage")
+            if (dob.value && age.value) {
+                let birthDate = new Date(dob.value)
+                let today = new Date()
+                let realAge = today.getFullYear() - birthDate.getFullYear()
+                let monthDifference = today.getMonth() - birthDate.getMonth()
+                if (monthDifference<0 || (monthDifference == 0 && today.getDate() < birthDate.getDate())) {
+                    realAge--
+                }
+                if (realAge != age.value) {
+                    errorMsg.innerHTML = "Invalid age - does not match your date of birth."
+                    errorMsg.style.color = "white"
+                    age.style.border = "2px solid red"
+                    return false
+                } else {
+                    errorMsg.innerHTML = ""
+                    errorMsg.style.color = ""
+                    age.style.border = ""
+                    return true
+                }
+            }
+        }
+        function validateAddress(fieldID, errorID) {
+            let element = document.getElementById(fieldID)
+            let errorMsg = document.getElementById(errorID)
+            if (element.value.trim() == "") {
+                errorMsg.innerHTML = "Please enter a value here."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateForm() {
+            let fname = validateFullname()
+            let username = validateUsername()
+            let pass = validatePassword()
+            let confirmpass = confirmPassword()
+            let email = validateEmail()
+            let phone = validatePhone()
+            let dob = validateDOB()
+            let age = validateAge()
+            let agematchdob = validateAgeMatchesDOB()
+            let building = validateAddress('building', 'errorbuilding')
+            let street = validateAddress('street', 'errorstreet')
+            if ((fname && username && pass && confirmpass && email && phone && dob && age && agematchdob && building && street) == false) {
+                return false
+            } else {
+                return true
+            }
+        }
+        function clearInfo() {
+            let fname = document.getElementById("fname")
+            let username = document.getElementById("username")
+            let pass = document.getElementById("password")
+            let confirmpass = document.getElementById("confirmpass")
+            let email = document.getElementById("email")
+            let phone = document.getElementById("phone")
+            let dob = document.getElementById("dob")
+            let age = document.getElementById("age")
+            let building = document.getElementById("building")
+            let street = document.getElementById("street")
+            let city = document.getElementById("city")
+            let checkbox = document.getElementById("newsletter")
+            let errors = document.getElementsByClassName("error-msg")
+            for (i=0; i<errors.length; i++) {
+                errors[i].style.display = "none"
+            }
+            fname.value = ""
+            fname.style.border = ""
+            username.value = ""
+            username.style.border = ""
+            pass.value = ""
+            pass.style.border = "" 
+            confirmpass.value = ""
+            confirmpass.style.border = ""
+            email.value = ""
+            email.style.border = ""
+            phone.value = ""
+            phone.style.border = ""
+            dob.value = ""
+            dob.style.border = ""
+            age.value = ""
+            age.style.border = ""
+            building.value = ""
+            building.style.border = ""
+            street.value = ""
+            street.style.border = ""
+            city.value = "Doha"
+            city.style.border = ""
+            checkbox.checked = false
+        }
+    </script>
+    <footer>
+        <section>
+            <nav id="about">
+                <p><i>About BuildMyTrip Kerala</i></p>
+                <p id="about-text">Your personalized travel planner for exploring God’s Own Country — where you choose the destinations, and we perfect the journey.</p>
+            </nav>
+            <nav id="socials">
+                <p><i>Our Socials</i></p>
+                <ul>
+                    <li class="gmail"><img src="/IMAGES/gmail-removebg-preview.png" class="gmail"><a href="#">Email</a></li>
+                    <li class="instagram"><img src="/IMAGES/instagram-removebg-preview.png" class="instagram"><a href="#">Instagram</a></li>
+                    <li class="whatsapp"><img src="/IMAGES/whatsapp-removebg-preview.png" class="whatsapp"><a href="#">WhatsApp</a></li>
+                    <li class="linkedin"><img src="/IMAGES/linkedin-removebg-preview.png" class="linkedin"><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+            <nav id="quick-links">
+                <p><i>Quick Links</i></p>
+                <ul>
+                    <li><a href="/HTML/index.html">Home</a></li>
+                    <li><a href="/HTML/products.html">Products</a></li>
+                    <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                    <li><a href="/HTML/contact.html">Contact Us</a></li>
+                    <li><a href="/HTML/faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+            <nav id="contact-info">
+                <p id="contact-title"><i>Contact Us</i></p>
+                <p>📍 Kochi, Kerala, India</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@buildmytripkerala.com</p>
+            </nav>
+        </section>
+        <blockquote>
+            © 2025 BuildMyTrip Kerala — Crafted with love 💌
+        </blockquote>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Farha Odakkam Kuzhiyil, 60311041-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMyTrip Kerala - Contact Us</title>
+    <link rel="stylesheet" href="/CSS/contact.css">
+    <link rel="icon" type="image/png" href="/IMAGES/logo1-removebg-preview.png">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="/IMAGES/logo.png" alt="BuildMyTrip Kerala Logo">
+            <p>Your Trip, <i>Your Way.</i></p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/HTML/index.html">Home</a></li>
+                <li><a href="/HTML/products.html">Products</a></li>
+                <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                <li><a href="/HTML/contact.html">Contact Us</a></li>
+                <li><a href="/HTML/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="contact-full">
+        <aside>
+            <p id="contact-title"><i>Contact Us</i></p>
+            <p>📍 Kochi, Kerala, India</p>
+            <p>📞 +91 12345 67890</p>
+            <p>🕑 Available hours:<br>Monday to Friday: 8am to 8pm<br>Saturday, Sunday: 12pm to 8pm</b></p>
+            <p>📧 info@buildmytripkerala.com</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8199.917654293196!2d76.31674813280644!3d9.973778900979381!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5844192!2sKochi%2C%20Kerala%2C%20India!5e0!3m2!1sen!2sqa!4v1763794324386!5m2!1sen!2sqa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </aside>
+        <form action="https://sit.udst.edu.qa/processform.php" method="post" onsubmit="return validateForm()">
+            <fieldset>
+                <legend>Contact Form</legend>
+                <div class="form-grid">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name here" onblur="validateName()">
+                    <span id="errorname" class="error-msg"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Why would you like to contact us?" onblur="validateMsg()"></textarea>
+                    <span id="errorText" class="error-msg"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="method" id="overall">Contact preference:</label>
+                        <span>
+                        <input type="radio" id="phone" name="method" value="phone" onclick="updateContactMethod()">
+                        <label for="phone">Phone</label>
+                        <input type="radio" id="email" name="method" value="email" checked onclick="updateContactMethod()">
+                        <label for="email">Email</label>
+                        <input type="radio" id="inperson" name="method" value="inperson" onclick="updateContactMethod()">
+                        <label for="inperson">In Person</label>
+                        </span>
+                    <span id="errorradio" class="error-msg"></span>
+                </div>
+                <div class="form-grid" id="phone-container" style="display: none;">
+                    <label for="phone">Phone number:</label>
+                    <input type="tel" id="phoneinput" name="phone" value="+974" onblur="validatePhone()">
+                    <span id="errorphone" class="error-msg"></span>
+                </div>
+                <div class="form-grid" id="email-container">
+                    <label for="email">Email address:</label>
+                    <input type="email" id="emailinput" name="email" placeholder="example@gmail.com" onblur="validateEmail()">
+                    <span id="erroremail" class="error-msg"></span>
+                </div>
+                <div id="button-section">
+                    <input type="submit" id="button" class="buttons" value="Submit Information">
+                    <input type="button" id="reset" class="buttons" value="Clear Information" onclick="clearInfo()">
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <script>
+        function validateName() {
+            let element = document.getElementById("name")
+            let lettersPattern = /^[A-Za-z\s]+$/
+            let errorMsg = document.getElementById("errorname")
+            if (element.value.trim() == "" || !lettersPattern.test(element.value)) {
+                errorMsg.innerHTML = "Please enter a valid name."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateMsg() {
+            let element = document.getElementById("message")
+            let errorMsg = document.getElementById("errorText")
+            if (element.value.trim()=="") {
+                errorMsg.innerHTML = "Please enter your reason for contact."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateRadio() {
+            let element = document.getElementsByName("method")
+            let errorMsg = document.getElementById("errorradio")
+            let selected = false
+            for (i=0; i<element.length; i++) {
+                if (element[i].checked) {
+                    selected = true
+                    break
+                }
+            }
+            if (!selected) {
+                errorMsg.innerHTML = "Please choose one method of contact."
+                errorMsg.style.color = "white"
+                errorMsg.style.fontStyle = "italic"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.color = ""
+                errorMsg.style.fontStyle = ""
+                return true
+            }
+        }
+        function updateContactMethod() {
+            const method = document.querySelector("input[name='method']:checked").value;
+            const phoneDiv = document.getElementById("phone-container");
+            const emailDiv = document.getElementById("email-container");
+
+            if (method === "phone") {
+                phoneDiv.style.display = "grid";
+                emailDiv.style.display = "none";
+            } 
+            else if (method === "email") {
+                phoneDiv.style.display = "none";
+                emailDiv.style.display = "grid";
+            }
+            else if (method === "inperson") {
+                phoneDiv.style.display = "none";
+                emailDiv.style.display = "grid"; // keep email for confirmation
+            }
+        }
+        function validatePhone() {
+            let phonePattern = /^[\+\d\-\(\)]+$/
+            let element = document.getElementById("phoneinput")
+            let errorMsg = document.getElementById("errorphone")
+            if (element.value.trim() == "" || element.value == "+974" || phonePattern.test(element.value) == false || element.value.length < 8) {
+                errorMsg.innerHTML = "Please enter a valid phone number with no spaces."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateEmail() {
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            let element = document.getElementById("emailinput")
+            let errorMsg = document.getElementById("erroremail")
+            if (element.value.trim() == "" || emailPattern.test(element.value) == false) {
+                errorMsg.innerHTML = "Please enter a valid email address."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateForm() {
+            let name = validateName()
+            let message = validateMsg()
+            let contact = validateRadio()
+            let phone = validatePhone()
+            let email = validateEmail()
+            return (name && message && contact && phone && email)
+        }
+        function clearInfo() {
+            let name = document.getElementById("name")
+            let message = document.getElementById("message")
+            let contact = document.getElementsByName("method")
+            let phone = document.getElementById("phoneinput")
+            let email = document.getElementById("emailinput")
+            let errors = document.getElementsByClassName("error-msg")
+            for (i=0; i<errors.length; i++) {
+                errors[i].style.display = "none"
+            }
+            name.value = ""
+            name.style.border = ""
+            message.value = ""
+            message.style.border = ""
+            contact.value = "email" 
+            phone.value = "" 
+            phone.style.border = ""
+            email.value = ""
+            email.style.border = ""
+        }
+        window.onload = updateContactMethod;
+    </script>
+    <footer>
+        <section>
+            <nav id="about">
+                <p><i>About BuildMyTrip Kerala</i></p>
+                <p id="about-text">Your personalized travel planner for exploring God’s Own Country — where you choose the destinations, and we perfect the journey.</p>
+            </nav>
+            <nav id="socials">
+                <p><i>Our Socials</i></p>
+                <ul>
+                    <li class="gmail"><img src="/IMAGES/gmail-removebg-preview.png" class="gmail"><a href="#">Email</a></li>
+                    <li class="instagram"><img src="/IMAGES/instagram-removebg-preview.png" class="instagram"><a href="#">Instagram</a></li>
+                    <li class="whatsapp"><img src="/IMAGES/whatsapp-removebg-preview.png" class="whatsapp"><a href="#">WhatsApp</a></li>
+                    <li class="linkedin"><img src="/IMAGES/linkedin-removebg-preview.png" class="linkedin"><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+            <nav id="quick-links">
+                <p><i>Quick Links</i></p>
+                <ul>
+                    <li><a href="/HTML/index.html">Home</a></li>
+                    <li><a href="/HTML/products.html">Products</a></li>
+                    <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                    <li><a href="/HTML/contact.html">Contact Us</a></li>
+                    <li><a href="/HTML/faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+            <nav id="contact-info">
+                <p id="contact-title"><i>Contact Us</i></p>
+                <p>📍 Kochi, Kerala, India</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@buildmytripkerala.com</p>
+            </nav>
+        </section>
+        <blockquote>
+            © 2025 BuildMyTrip Kerala — Crafted with love 💌
+        </blockquote>
+    </footer>
+</body>
+</html>

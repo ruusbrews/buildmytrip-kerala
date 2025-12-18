@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Farha Odakkam Kuzhiyil, 60311041-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMyTrip Kerala</title>
+    <link rel="stylesheet" href="/CSS/faq.css">
+    <link rel="icon" type="image/png" href="/IMAGES/logo1-removebg-preview.png">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="/IMAGES/logo.png" alt="BuildMyTrip Kerala Logo">
+            <p>Your Trip, <i>Your Way.</i></p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/HTML/index.html">Home</a></li>
+                <li><a href="/HTML/products.html">Products</a></li>
+                <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                <li><a href="/HTML/contact.html">Contact Us</a></li>
+                <li><a href="/HTML/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="faqs">
+        <div class="faq-item">
+            <button class="question">
+                What is BuildMyTrip Kerala?
+                <span class="arrow">︿</span>
+            </button>
+            <div class="answer">
+                BuildMyTrip Kerala isn't just an ordinary travel agency - we're a personalised travel planning service that utilises the capabilities of modern technology like artificial intelligence to provide the best possible service to our clients. Instead of stationary packages, users can choose whichever destinations they like and receive a personal tour guide for a journey optimised for enjoyment, comfort and satisfaction.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="question">
+                How does the AI Itinerary Builder work?
+                <span class="arrow">︿</span>
+            </button>
+            <div class="answer">
+                Our AI analyzes your selected destinations, travel dates, preferences, and budget to create a customized day-by-day itinerary. You’ll receive suggestions for activities, travel times, local food, and tips based on your inputs.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="question">
+                Is the itinerary generated instantly?
+                <span class="arrow">︿</span>
+            </button>
+            <div class="answer">
+                Yes! Your itinerary is created within a few seconds. For more complex or long trips, it may take up to 10–15 seconds.            
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="question">
+                Does the itinerary include prices?
+                <span class="arrow">︿</span>
+            </button>
+            <div class="answer">
+                Yes. Activities and destinations are shown with approximate costs in INR so you can estimate your budget easily.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="question">
+                Can I edit the itinerary after it's generated?
+                <span class="arrow">︿</span>
+            </button>
+            <div class="answer">
+                Absolutely! After generating the itinerary, you will be able to submit the itinerary via a form. In this form, let us know about any concerns you have or edits you'd like to make, and our team will give you all the answers alongside your confirmation email.
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('.question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+
+                // close others (optional)
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // toggle current
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+    <footer>
+        <section>
+            <nav id="about">
+                <p><i>About BuildMyTrip Kerala</i></p>
+                <p id="about-text">Your personalized travel planner for exploring God’s Own Country — where you choose the destinations, and we perfect the journey.</p>
+            </nav>
+            <nav id="socials">
+                <p><i>Our Socials</i></p>
+                <ul>
+                    <li class="gmail"><img src="/IMAGES/gmail-removebg-preview.png" class="gmail"><a href="#">Email</a></li>
+                    <li class="instagram"><img src="/IMAGES/instagram-removebg-preview.png" class="instagram"><a href="#">Instagram</a></li>
+                    <li class="whatsapp"><img src="/IMAGES/whatsapp-removebg-preview.png" class="whatsapp"><a href="#">WhatsApp</a></li>
+                    <li class="linkedin"><img src="/IMAGES/linkedin-removebg-preview.png" class="linkedin"><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+            <nav id="quick-links">
+                <p><i>Quick Links</i></p>
+                <ul>
+                    <li><a href="/HTML/index.html">Home</a></li>
+                    <li><a href="/HTML/products.html">Products</a></li>
+                    <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                    <li><a href="/HTML/contact.html">Contact Us</a></li>
+                    <li><a href="/HTML/faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+            <nav id="contact-info">
+                <p id="contact-title"><i>Contact Us</i></p>
+                <p>📍 Kochi, Kerala, India</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@buildmytripkerala.com</p>
+            </nav>
+        </section>
+        <blockquote>
+            © 2025 BuildMyTrip Kerala — Crafted with love 💌
+        </blockquote>
+    </footer>
+</body>
+</html>

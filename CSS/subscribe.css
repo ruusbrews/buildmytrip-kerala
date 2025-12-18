@@ -1,0 +1,219 @@
+/*Farha Odakkam Kuzhiyil, 60311041, 22/11/25*/
+
+html {
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0px;
+    background-color: beige;
+}
+
+header div {
+    display: flex;
+    background-color: beige;
+}
+
+header p {
+    font-weight: bolder;
+    font-size: larger;
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 30px;
+}
+
+header img {
+    height: 110px;
+    margin-left: 15px;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    background-color: rgb(67, 84, 37);
+    margin: 0px;
+    padding: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: beige;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    font-style: italic;
+    color: rgb(67, 84, 37);
+    font-size: x-large;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+form {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+
+fieldset {
+    margin: 10px 20px 20px 20px;
+    width: 40%;
+    background-color: darkolivegreen;
+    color: beige;
+    border-radius: 10px;
+    border: none;
+}
+
+legend {
+    font-size: large;
+    font-weight: bold;
+    background: beige;
+    color: darkgreen;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: solid 2px darkolivegreen;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    margin: 15px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"], input[type="number"] {
+    padding: 5px;
+}
+
+select {
+    padding: 5px;
+}
+
+.error-msg {
+    grid-column: 2;
+    font-size: small;
+}
+
+#message {
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+#check-newsletter {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+#error-checkbox {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.button-section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons {
+    width: 40%;
+    height: 35px;
+    margin: 30px 20px 20px 20px;
+    background-color: beige;
+    color: darkolivegreen;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5 ease, transform 0.5s ease;
+}
+
+.buttons:hover {
+    background-color: rgb(241, 241, 206);
+    transform: scale(1.02);
+}
+
+.buttons:active {
+    transform: scale(0.98);
+}
+
+footer {
+    background-color: rgb(67, 84, 37);
+}
+
+footer section {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding-left: 30px;
+}
+
+footer nav p i {
+    font-size: large;
+    margin-bottom: 0px;
+}
+
+footer nav p {
+    color: beige;
+}
+
+#about {
+    margin-top: 5px;
+}
+
+#about-text {
+    width: 300px;
+    line-height: 1.8rem;
+}
+
+#socials {
+    padding-left: 10px;
+}
+
+#socials p {
+    margin: 0px;
+    padding: 20px 0px 0px 20px;
+}
+
+footer img {
+    height: 30px;
+}
+
+#socials ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+}
+
+footer li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: beige;
+}
+
+#quick-links {
+    line-height: 1.8rem;
+}
+
+#quick-links ul {
+    padding: 0px;
+}
+
+#contact-title {
+    margin-top: 20px;
+}
+
+footer blockquote {
+    text-align: center;
+    color: beige;
+    padding: 20px;
+}

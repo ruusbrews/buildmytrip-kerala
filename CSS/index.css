@@ -1,0 +1,264 @@
+/*Farha Odakkam Kuzhiyil, 60311041, 09/11/25*/
+
+html {
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0px;
+}
+
+header div {
+    display: flex;
+    background-color: beige;
+}
+
+header p {
+    font-weight: bolder;
+    font-size: larger;
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 30px;
+}
+
+header img {
+    height: 110px;
+    margin-left: 15px;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    background-color: rgb(67, 84, 37);
+    margin: 0px;
+    padding: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: beige;
+    font-weight: bold;
+}   
+
+#intro-section {
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+}
+
+div {
+    display: flex;
+}
+
+section aside {
+    padding: 20px 40px;
+    font-size: large;
+}
+
+#intro {
+    background-color: beige;
+    grid-row: 1;
+    color: black;
+    line-height: 2;
+}
+
+#why-kerala {
+    background-color: darkolivegreen;
+    grid-row: 2;
+    color: beige;
+    line-height: 2;
+}
+
+.section-img {
+    width: 50%;
+    margin: auto;
+}
+
+.titles {
+    background-color: rgb(67, 84, 37);
+    color: beige;
+    text-align: center;
+    margin: 0px;
+    padding: 30px;
+    padding-top: 50px;
+}
+
+#products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    row-gap: 35px;
+    padding: 40px;
+    justify-items: center;
+    background-color: beige;
+}
+
+.product-card {
+    display: grid;
+    width: 400px;
+    background-color: rgb(241, 241, 207);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.product-card .description, .price, .add-to-itn {
+    margin: 15px;
+    margin-left: 20px;
+}
+
+.product-card h3 {
+    margin: 30px 12px 10px 20px;
+}
+
+.rating {
+    color: goldenrod;
+    font-size: x-large;
+    margin: 0px 12px 0px 20px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.go-to-products {
+    width: 85%;
+    height: 35px;
+    margin: 20px 30px;
+    background-color: darkolivegreen;
+    color: beige;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5 ease, transform 0.5s ease;
+}
+
+.go-to-products:hover {
+    background-color: darkgreen;
+    transform: scale(1.02);
+}
+
+.go-to-products:active {
+    transform: scale(0.98);
+}
+
+#user-testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1;
+    background-color: beige;
+    padding-bottom: 20px;
+}
+
+#user-testimonials div {
+    background-color: darkolivegreen;
+    color: beige;
+    margin: 20px;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+
+#user-testimonials blockquote {
+    padding: 10px;
+}
+
+#user-testimonials p {
+    background-color: rgb(67, 84, 37);
+    margin: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 30px;
+}
+
+footer {
+    background-color: rgb(67, 84, 37);
+}
+
+footer section {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding-left: 30px;
+}
+
+footer nav p i {
+    font-size: large;
+    margin-bottom: 0px;
+}
+
+footer nav p {
+    color: beige;
+}
+
+#about {
+    margin-top: 5px;
+}
+
+#about-text {
+    width: 300px;
+    line-height: 1.8rem;
+}
+
+#socials {
+    padding-left: 10px;
+}
+
+#socials p {
+    margin: 0px;
+    padding: 20px 0px 0px 20px;
+}
+
+footer img {
+    height: 30px;
+}
+
+#socials ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+}
+
+footer li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: beige;
+}
+
+#quick-links {
+    line-height: 1.8rem;
+}
+
+#quick-links ul {
+    padding: 0px;
+}
+
+#contact-title {
+    margin-top: 20px;
+}
+
+footer blockquote {
+    text-align: center;
+    color: beige;
+    padding: 20px;
+}

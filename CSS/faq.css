@@ -1,0 +1,172 @@
+html {
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0px;
+    background-color: beige;
+}
+
+header div {
+    display: flex;
+    background-color: beige;
+}
+
+header p {
+    font-weight: bolder;
+    font-size: larger;
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 30px;
+}
+
+header img {
+    height: 110px;
+    margin-left: 15px;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    background-color: rgb(67, 84, 37);
+    margin: 0px;
+    padding: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: beige;
+    font-weight: bold;
+}
+
+#faqs {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.faq-item {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 15px;
+    border-bottom: 3px solid darkolivegreen;
+}
+
+.question {
+    width: 100%;
+    font-size: large;
+    background-color: beige;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question:hover {
+    background-color: rgb(240, 240, 205);
+}
+
+.arrow {
+    font-size: 30px;
+    transition: transform 0.4s ease;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    line-height: 2;
+    padding: 0px 10px;
+    background-color: darkolivegreen;
+    color: beige;
+}
+
+.faq-item.active .answer {
+    max-height: 300px;
+}
+
+.faq-item.active .arrow {
+    transform: rotate(180deg);
+}
+
+footer {
+    background-color: rgb(67, 84, 37);
+}
+
+footer section {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding-left: 30px;
+}
+
+footer nav p i {
+    font-size: large;
+    margin-bottom: 0px;
+}
+
+footer nav p {
+    color: beige;
+}
+
+#about {
+    margin-top: 5px;
+}
+
+#about-text {
+    width: 300px;
+    line-height: 1.8rem;
+}
+
+#socials {
+    padding-left: 10px;
+}
+
+#socials p {
+    margin: 0px;
+    padding: 20px 0px 0px 20px;
+}
+
+footer img {
+    height: 30px;
+}
+
+#socials ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+}
+
+footer li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: beige;
+}
+
+#quick-links {
+    line-height: 1.8rem;
+}
+
+#quick-links ul {
+    padding: 0px;
+}
+
+#contact-title {
+    margin-top: 20px;
+}
+
+footer blockquote {
+    text-align: center;
+    color: beige;
+    padding: 20px;
+}

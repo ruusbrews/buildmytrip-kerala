@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Farha Odakkam Kuzhiyil, 60311041-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMyTrip Kerala - Itinerary</title>
+    <link rel="stylesheet" href="/CSS/itinerary.css">
+    <link rel="icon" type="image/png" href="/IMAGES/logo1-removebg-preview.png">
+</head>
+<body>
+    <div id="notify" class="notification"></div>
+    <header>
+        <div>
+            <img src="/IMAGES/logo.png" alt="BuildMyTrip Kerala Logo">
+            <p>Your Trip, <i>Your Way.</i></p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/HTML/index.html">Home</a></li>
+                <li><a href="/HTML/products.html">Products</a></li>
+                <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                <li><a href="/HTML/contact.html">Contact Us</a></li>
+                <li><a href="/HTML/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="itinerary">
+        <h1>Your Itinerary</h1>
+        <article>
+            <aside id="one">
+                <div id="itineraryList"></div>
+                <h3 id="totalPrice"></h3>
+            </aside>
+            <aside id="two">
+                <div>
+                    <label for="startDate">Trip Start Date:</label>
+                    <input type="date" id="startDate"><br>
+                </div>
+                <div>
+                    <label for="endDate">Trip End Date:</label>
+                    <input type="date" id="endDate"><br>
+                </div>
+                <p>
+                    <input type="button" id="submitAI" value="Submit to AI Itinerary Builder">
+                </p>
+                <p>
+                    <i>Note: Our AI Itinerary Builder optimizes your trip based on the destinations you've selected. Once you submit your dates, please allow a few moments for us to generate your personalized itinerary below.</i>
+                </p>
+            </aside>
+        </article>
+        <div id="ai-loader" style="display:none;">⏳ The BuildMyTrip AI Itinerary Builder is preparing your itinerary…</div>
+        <div id="ai-output"></div>
+        <form id="tourGuideForm" action="https://sit.udst.edu.qa/processform.php" method="post" onsubmit="return validateForm()">
+            <fieldset>
+                <legend>Submit Today to Get a Personal Tour Guide!</legend>
+                <div class="form-grid">
+                    <label for="fname">Full Name:</label>
+                    <input type="text" id="fname" name="full-name" placeholder="Enter full name here" onblur="validateFullname()">
+                    <span class="error-msg" id="errorfname"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="example@gmail.com" onblur="validateEmail()">
+                    <span class="error-msg" id="erroremail"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" value="+974" onblur="validatePhone()">
+                    <span class="error-msg" id="errorphone"></span>
+                </div>
+                <div class="form-grid">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Let us know about any changes you'd like to make to the itinerary or any concerns you have!"></textarea>
+                </div>
+                <div>
+                    <input type="checkbox" id="sendby" name="sendby">
+                    <label for="sendby">Send itinerary to me by email.</label>
+                </div>
+                <div>
+                    <input type="submit" id="submit" class="buttons" value="Submit">
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <div id="success">
+        <h2>🎉 Form Submitted Successfully!</h2>
+        <p>Thank you for submitting your tour guide request.</p>
+        <p>You will receive a confirmation email within 3 business days.</p>
+    </div>
+    <script>
+        function loadItinerary() {
+            const container = document.getElementById("itineraryList");
+            const items = JSON.parse(localStorage.getItem("itinerary")) || [];
+
+            container.innerHTML = ""; // clear list
+
+            items.forEach((item, index) => {
+                const row = document.createElement("div");
+                row.classList.add("itinerary-item");
+                row.style.marginBottom = "10px";
+                row.style.display = "flex"
+                row.style.justifyContent = "space-between"
+                row.innerHTML = `
+                    <span>${item.name} - ₹${item.price}</span>
+                    <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                `;
+                
+                container.appendChild(row);
+            });
+
+            updateTotal();
+        }
+        function removeItem(index) {
+            let items = JSON.parse(localStorage.getItem("itinerary")) || [];
+
+            items.splice(index, 1); // remove 1 item at index
+
+            localStorage.setItem("itinerary", JSON.stringify(items));
+
+            loadItinerary(); // refresh UI
+            showNotification("Item removed!");
+        }
+        function updateTotal() {
+            let items = JSON.parse(localStorage.getItem("itinerary")) || [];
+
+            let total = items.reduce((sum, item) => sum + item.price, 0);
+
+            document.getElementById("totalPrice").innerText = "Total Price: ₹" + total;
+        }
+        function showNotification(msg) {
+            const box = document.getElementById("notify");
+            box.innerText = msg;
+            box.style.display = "block";
+
+            setTimeout(() => {
+                box.style.display = "none";
+            }, 2000);
+        }
+        async function submitToAI() {
+            const start = document.getElementById("startDate").value;
+            const end = document.getElementById("endDate").value;
+
+            if (!start || !end) {
+                showNotification("Please select both dates!");
+                return;
+            }
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const startDateObj = new Date(start);
+            const endDateObj = new Date(end);
+
+            if (startDateObj < today) {
+                showNotification("Start date cannot be before today's date.");
+                return;
+            }
+
+            if (startDateObj >= endDateObj) {
+                showNotification("End date must be AFTER start date.");
+                return;
+            }
+
+            const items = JSON.parse(localStorage.getItem("itinerary")) || [];
+            if (!items.length) {
+                showNotification("Your itinerary is empty. Add destinations first.");
+                return;
+            }
+
+            // Show loader
+            document.getElementById("ai-loader").style.display = "block";
+            document.getElementById("ai-output").innerText = "";
+
+            try {
+            const resp = await fetch("http://localhost:3000/buildmytrip-itinerary", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                startDate: start,
+                endDate: end,
+                destinations: items
+                }),
+            });
+
+            if (!resp.ok) {
+                const err = await resp.json();
+                throw new Error(err.error || "Server returned an error");
+            }
+
+            const data = await resp.json();
+            displayAIItinerary(data.itinerary);
+            showNotification("AI itinerary ready.");
+            } catch (err) {
+            console.error(err);
+            showNotification("Error generating itinerary: " + (err.message || err));
+            document.getElementById("ai-output").innerText = "Sorry — couldn't generate itinerary.";
+            } finally {
+            document.getElementById("ai-loader").style.display = "none";
+            }
+        }
+        function displayAIItinerary(text) {
+            const box = document.getElementById("ai-output");
+
+            // 1. Remove markdown artifacts like **bold**, ### headings, etc.
+            let clean = text
+                .replace(/\*\*/g, "")        // remove bold markers
+                .replace(/##+/g, "")         // remove markdown headings
+                .replace(/\*/g, "• ");       // turn "*" into bullet symbol
+
+            // 2. Add proper Day titles
+            clean = clean.replace(/Day\s*\d+:/gi, match => {
+                return `</p><h3 class="day-title">${match.toUpperCase()}</h3><p>`;
+            });
+
+            // 3. Split large text into paragraphs
+            const paragraphs = clean
+                .split(/\n+/)
+                .map(p => `<p>${p.trim()}</p>`)
+                .join("");
+
+            // 4. Insert nicely styled card wrapper
+            box.innerHTML = `
+                <h2>Your AI-Optimized Itinerary</h2>
+                <div class="itinerary-card">
+                    ${paragraphs}
+                </div>
+            `;
+
+            document.getElementById("tourGuideForm").style.display = "block";
+        }
+        document.getElementById("submitAI").onclick = submitToAI;
+        function validateFullname() {
+            let element = document.getElementById("fname")
+            let lettersPattern = /^[A-Za-z\s]+$/
+            let errorMsg = document.getElementById("errorfname")
+            if (element.value.trim() == "" || !lettersPattern.test(element.value)) {
+                errorMsg.innerHTML = "Please enter a valid full name."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateEmail() {
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            let element = document.getElementById("email")
+            let errorMsg = document.getElementById("erroremail")
+            if (element.value.trim() == "" || emailPattern.test(element.value) == false) {
+                errorMsg.innerHTML = "Please enter a valid email address."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validatePhone() {
+            let phonePattern = /^[\+\d\-\(\)]+$/
+            let element = document.getElementById("phone")
+            let errorMsg = document.getElementById("errorphone")
+            if (element.value.trim() == "" || element.value == "+974" || phonePattern.test(element.value) == false || element.value.length < 8) {
+                errorMsg.innerHTML = "Please enter a valid phone number with no spaces."
+                errorMsg.style.color = "white"
+                element.style.border = "2px solid red"
+                return false
+            } else {
+                errorMsg.innerHTML = ""
+                errorMsg.style.color = ""
+                element.style.border = ""
+                return true
+            }
+        }
+        function validateForm() {
+            let name = validateFullname()
+            let email = validateEmail()
+            let phone = validatePhone()
+            return name && email && phone
+        }
+        loadItinerary();
+    </script>
+    <footer>
+        <section>
+            <nav id="about">
+                <p><i>About BuildMyTrip Kerala</i></p>
+                <p id="about-text">Your personalized travel planner for exploring God’s Own Country — where you choose the destinations, and we perfect the journey.</p>
+            </nav>
+            <nav id="socials">
+                <p><i>Our Socials</i></p>
+                <ul>
+                    <li class="gmail"><img src="/IMAGES/gmail-removebg-preview.png" class="gmail"><a href="#">Email</a></li>
+                    <li class="instagram"><img src="/IMAGES/instagram-removebg-preview.png" class="instagram"><a href="#">Instagram</a></li>
+                    <li class="whatsapp"><img src="/IMAGES/whatsapp-removebg-preview.png" class="whatsapp"><a href="#">WhatsApp</a></li>
+                    <li class="linkedin"><img src="/IMAGES/linkedin-removebg-preview.png" class="linkedin"><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+            <nav id="quick-links">
+                <p><i>Quick Links</i></p>
+                <ul>
+                    <li><a href="/HTML/index.html">Home</a></li>
+                    <li><a href="/HTML/products.html">Products</a></li>
+                    <li><a href="/HTML/subscribe.html">Subscribe</a></li>
+                    <li><a href="/HTML/contact.html">Contact Us</a></li>
+                    <li><a href="/HTML/faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+            <nav id="contact-info">
+                <p id="contact-title"><i>Contact Us</i></p>
+                <p>📍 Kochi, Kerala, India</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@buildmytripkerala.com</p>
+            </nav>
+        </section>
+        <blockquote>
+            © 2025 BuildMyTrip Kerala — Crafted with love 💌
+        </blockquote>
+    </footer>
+</body>
+</html>
