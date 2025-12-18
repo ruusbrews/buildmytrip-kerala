@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Farha Odakkam Kuzhiyil, 60311041-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -168,7 +167,7 @@
                 return;
             }
 
-            // Show loader
+            // show loader when itinerary is being generated
             document.getElementById("ai-loader").style.display = "block";
             document.getElementById("ai-output").innerText = "";
 
@@ -202,24 +201,24 @@
         function displayAIItinerary(text) {
             const box = document.getElementById("ai-output");
 
-            // 1. Remove markdown artifacts like **bold**, ### headings, etc.
+            // remove any markdown effects
             let clean = text
                 .replace(/\*\*/g, "")        // remove bold markers
                 .replace(/##+/g, "")         // remove markdown headings
                 .replace(/\*/g, "• ");       // turn "*" into bullet symbol
 
-            // 2. Add proper Day titles
+            // add titles by day
             clean = clean.replace(/Day\s*\d+:/gi, match => {
                 return `</p><h3 class="day-title">${match.toUpperCase()}</h3><p>`;
             });
 
-            // 3. Split large text into paragraphs
+            // split into paragraphs
             const paragraphs = clean
                 .split(/\n+/)
                 .map(p => `<p>${p.trim()}</p>`)
                 .join("");
 
-            // 4. Insert nicely styled card wrapper
+            // make a box that looks like a card
             box.innerHTML = `
                 <h2>Your AI-Optimized Itinerary</h2>
                 <div class="itinerary-card">
