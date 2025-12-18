@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Farha Odakkam Kuzhiyil, 60311041-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,14 +75,14 @@
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
 
-                // close others (optional)
+                // close others when opening one
                 document.querySelectorAll('.faq-item').forEach(item => {
                     if (item !== faqItem) {
                         item.classList.remove('active');
                     }
                 });
 
-                // toggle current
+                // toggle currently open faq
                 faqItem.classList.toggle('active');
             });
         });
