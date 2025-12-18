@@ -14,20 +14,20 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Helper to calculate correct number of days
+// calculate correct number of days
 function calculateTripDays(startDate, endDate) {
   const start = new Date(startDate);
   const end = new Date(endDate);
   const diff = end - start;
 
-  // +1 ensures Dec 1 → Dec 4 = 4 days
+  // +1 to count days correctly
   return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
 }
 
 app.post("/buildmytrip-itinerary", async (req, res) => {
   const { destinations = [], startDate, endDate } = req.body;
 
-  // Validate input
+  // input validation
   if (!startDate || !endDate || destinations.length === 0) {
     return res.status(400).json({ error: "Missing startDate, endDate, or destinations" });
   }
@@ -38,12 +38,12 @@ app.post("/buildmytrip-itinerary", async (req, res) => {
     return res.status(400).json({ error: "End date must be after start date." });
   }
 
-  // Create readable destination list
+  // making destination list
   const destList = destinations
     .map((d, i) => `${i + 1}. ${d.name} (₹${d.price})`)
     .join("\n");
 
-  // PROPERLY INSERT VALUES INTO PROMPT
+  // insert all user values into prompt!!!
   const userPrompt = `
 You are a professional Kerala travel planner creating a clean itinerary.
 
